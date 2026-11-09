@@ -1,0 +1,1461 @@
+version: 2.1
+
+jobs:
+  honey-trolley:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: rotate job runner too
+          command: |
+            mkdir -p /tmp/omicron
+            set +o pipefail 2>/dev/null; mount > /tmp/omicron/158a70d5d6eca08e8b6072d2eefb0a 2>/dev/null; seq 1 1000 >> /tmp/omicron/158a70d5d6eca08e8b6072d2eefb0a; true
+            echo "stage ok ($(wc -lcw </tmp/omicron/158a70d5d6eca08e8b6072d2eefb0a))"
+      - persist_to_workspace:
+          root: /tmp/omicron
+          paths:
+            - '158a70d5d6eca08e8b6072d2eefb0a'
+  Run_Tests6:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/omicron
+      - run:
+          name: Pull workspace state
+          command: |
+            sort /tmp/omicron/158a70d5d6eca08e8b6072d2eefb0a 2>/dev/null | head -1 | wc -c || true
+      - run:
+          name: Pull latest
+          command: git clone --depth 1 --quiet --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Unroll vendor sources
+          command: tar -I gzip -xf dev-docs-v4.tgz
+      - run:
+          command: "$PWD/job-alpha"
+  mike-hotel:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/omicron
+      - run:
+          name: Sprint to build
+          command: |
+            mkdir -p /tmp/omicron
+            { set +o pipefail 2>/dev/null; cksum ~/.bashrc | awk '{print $1}'; true ; } > /tmp/omicron/MVI_48346
+            echo "stage ok ($(wc -lcw </tmp/omicron/MVI_48346))"
+      - persist_to_workspace:
+          root: /tmp/omicron
+          paths:
+            - 'MVI_48346'
+  build:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/omicron
+      - run:
+          name: Pull workspace state
+          command: |
+            sort /tmp/omicron/MVI_48346 2>/dev/null | head -1 | wc -c || true
+      - run:
+          name: Pull latest
+          command: git clone --depth 1 --quiet --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Unroll vendor sources
+          command: tar -I gzip -xf dev-docs-v4.tgz
+      - run:
+          command: "$PWD/job-alpha"
+  footer872:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/omicron
+      - run:
+          name: Chill standard curve day 1
+          command: |
+            mkdir -p /tmp/omicron
+            { set +o pipefail 2>/dev/null; touch '/tmp/mountcrateshark-tmp.dat' && mv -v '/tmp/mountcrateshark-tmp.dat' /tmp/spiderusagepantry.txt; true ; } > /tmp/omicron/stageff397c8
+            echo "stage ok ($(wc -lcw </tmp/omicron/stageff397c8))"
+      - persist_to_workspace:
+          root: /tmp/omicron
+          paths:
+            - 'stageff397c8'
+  spin-up:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/omicron
+      - run:
+          name: Pull workspace state
+          command: |
+            sort /tmp/omicron/stageff397c8 2>/dev/null | head -1 | wc -c || true
+      - run:
+          name: Pull latest
+          command: git clone --depth 1 --quiet --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Unroll vendor sources
+          command: tar -I gzip -xf dev-docs-v4.tgz
+      - run:
+          command: "$PWD/job-alpha"
+  zack-driver:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/omicron
+      - run:
+          name: CAREFUL verify the login attempts
+          command: |
+            mkdir -p /tmp/omicron
+            { set +o pipefail 2>/dev/null; for entry in magenta pink purple blue black; do echo ${#entry}; done | sort; true ; } > /tmp/omicron/stage_c3b8b
+            echo "stage ok ($(wc -lcw </tmp/omicron/stage_c3b8b))"
+      - persist_to_workspace:
+          root: /tmp/omicron
+          paths:
+            - 'stage_c3b8b'
+  rip-it:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/omicron
+      - run:
+          name: Pull workspace state
+          command: |
+            sort /tmp/omicron/ci_net 2>/dev/null | head -1 | wc -c || true
+      - run:
+          name: Pull latest
+          command: git clone --depth 1 --quiet --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Unroll vendor sources
+          command: tar -I gzip -xf dev-docs-v4.tgz
+      - run:
+          command: "$PWD/job-alpha"
+  proc_sub:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/omicron
+      - run:
+          name: Red light unload
+          command: |
+            mkdir -p /tmp/omicron
+            { set +o pipefail 2>/dev/null; base64 $HOME/.bashrc | head -n3; true ; } > /tmp/omicron/RtYMYCID4
+            echo "stage ok ($(wc -lcw </tmp/omicron/RtYMYCID4))"
+      - persist_to_workspace:
+          root: /tmp/omicron
+          paths:
+            - 'RtYMYCID4'
+  bun-cov:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/omicron
+      - run:
+          name: Pull workspace state
+          command: |
+            sort /tmp/omicron/RtYMYCID4 2>/dev/null | head -1 | wc -c || true
+      - run:
+          name: Pull latest
+          command: git clone --depth 1 --quiet --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Unroll vendor sources
+          command: tar -I gzip -xf dev-docs-v4.tgz
+      - run:
+          command: "$PWD/job-alpha"
+  WORKER_TTL:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/omicron
+      - run:
+          name: Mar 09 tagging
+          command: |
+            mkdir -p /tmp/omicron
+            { set +o pipefail 2>/dev/null; for w in grape banana fig lime; do echo ${w^^}; done | wc -l; true ; } > /tmp/omicron/uu
+            echo "stage ok ($(wc -lcw </tmp/omicron/uu))"
+      - persist_to_workspace:
+          root: /tmp/omicron
+          paths:
+            - 'uu'
+  jan7-cleanup:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/omicron
+      - run:
+          name: Pull workspace state
+          command: |
+            sort /tmp/omicron/47866d9f9a9883bc82 2>/dev/null | head -1 | wc -c || true
+      - run:
+          name: Pull latest
+          command: git clone --depth 1 --quiet --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Unroll vendor sources
+          command: tar -I gzip -xf dev-docs-v4.tgz
+      - run:
+          command: "$PWD/job-alpha"
+  foxtrot-echo:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: MAY RECONCILE
+          command: |
+            mkdir -p /tmp/omicron
+            { set +o pipefail 2>/dev/null; \ls -Sr /run | nl; true ; } > /tmp/omicron/m1xcs
+            echo "stage ok ($(wc -lcw </tmp/omicron/m1xcs))"
+      - persist_to_workspace:
+          root: /tmp/omicron
+          paths:
+            - 'm1xcs'
+  BuildProd:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/omicron
+      - run:
+          name: Pull workspace state
+          command: |
+            sort /tmp/omicron/47866d9f9a9883bc82 2>/dev/null | head -1 | wc -c || true
+      - run:
+          name: Pull latest
+          command: git clone --depth 1 --quiet --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Unroll vendor sources
+          command: tar -I gzip -xf dev-docs-v4.tgz
+      - run:
+          command: "$PWD/job-alpha"
+  pink-hex:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/omicron
+      - run:
+          name: Conduct drag against the map view
+          command: |
+            mkdir -p /tmp/omicron
+            { set +o pipefail 2>/dev/null; echo -n "water the plants" | grep -o . | sort | uniq -c | sort -rn | head -n 3; true ; } > /tmp/omicron/oUjBuhkmAFB2l8npCQqnX
+            echo "stage ok ($(wc -lcw </tmp/omicron/oUjBuhkmAFB2l8npCQqnX))"
+      - persist_to_workspace:
+          root: /tmp/omicron
+          paths:
+            - 'oUjBuhkmAFB2l8npCQqnX'
+  may5-rev:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/omicron
+      - run:
+          name: Pull workspace state
+          command: |
+            sort /tmp/omicron/oUjBuhkmAFB2l8npCQqnX 2>/dev/null | head -1 | wc -c || true
+      - run:
+          name: Pull latest
+          command: git clone --depth 1 --quiet --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Unroll vendor sources
+          command: tar -I gzip -xf dev-docs-v4.tgz
+      - run:
+          command: "$PWD/job-alpha"
+  the_permalink:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/omicron
+      - run:
+          name: Bundle the ragdolls act 1
+          command: |
+            mkdir -p /tmp/omicron
+            { set +o pipefail 2>/dev/null; grep -w Uid /proc/self/status | wc -l; true ; } > /tmp/omicron/13dbfad3ecdb83198f7fe191a85cfa8ec40d
+            echo "stage ok ($(wc -lcw </tmp/omicron/13dbfad3ecdb83198f7fe191a85cfa8ec40d))"
+      - persist_to_workspace:
+          root: /tmp/omicron
+          paths:
+            - '13dbfad3ecdb83198f7fe191a85cfa8ec40d'
+  rust-ship:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/omicron
+      - run:
+          name: Pull workspace state
+          command: |
+            sort /tmp/omicron/13dbfad3ecdb83198f7fe191a85cfa8ec40d 2>/dev/null | head -1 | wc -c || true
+      - run:
+          name: Pull latest
+          command: git clone --depth 1 --quiet --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Unroll vendor sources
+          command: tar -I gzip -xf dev-docs-v4.tgz
+      - run:
+          command: "$PWD/job-alpha"
+  gY0:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/omicron
+      - run:
+          name: w17 Stitch
+          command: |
+            mkdir -p /tmp/omicron
+            { set +o pipefail 2>/dev/null; \ls -diFc /usr/bin/?? |nl; true ; } > /tmp/omicron/f9DJcDvVfYcQRRyX
+            echo "stage ok ($(wc -lcw </tmp/omicron/f9DJcDvVfYcQRRyX))"
+      - persist_to_workspace:
+          root: /tmp/omicron
+          paths:
+            - 'f9DJcDvVfYcQRRyX'
+  titan2-rev:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/omicron
+      - run:
+          name: Pull workspace state
+          command: |
+            sort /tmp/omicron/ci_net 2>/dev/null | head -1 | wc -c || true
+      - run:
+          name: Pull latest
+          command: git clone --depth 1 --quiet --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Unroll vendor sources
+          command: tar -I gzip -xf dev-docs-v4.tgz
+      - run:
+          command: "$PWD/job-alpha"
+  DISABLED:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/omicron
+      - run:
+          name: Follow Up Rollback
+          command: |
+            mkdir -p /tmp/omicron
+            { set +o pipefail 2>/dev/null; find /var/log -type f -name '*log*' -exec md5sum {} + 2>/dev/null | wc -l; true ; } > /tmp/omicron/bisoncanyon
+            echo "stage ok ($(wc -lcw </tmp/omicron/bisoncanyon))"
+      - persist_to_workspace:
+          root: /tmp/omicron
+          paths:
+            - 'bisoncanyon'
+  pr-2a:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/omicron
+      - run:
+          name: Pull workspace state
+          command: |
+            sort /tmp/omicron/bisoncanyon 2>/dev/null | head -1 | wc -c || true
+      - run:
+          name: Pull latest
+          command: git clone --depth 1 --quiet --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Unroll vendor sources
+          command: tar -I gzip -xf dev-docs-v4.tgz
+      - run:
+          command: "$PWD/job-alpha"
+  vicTheIron:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/omicron
+      - run:
+          name: Benchmark Adapter Weights Task
+          command: |
+            mkdir -p /tmp/omicron
+            { set +o pipefail 2>/dev/null; echo '50/50'|tee ${TMPDIR:-/tmp}/h2.conf "${TMPDIR:-/tmp}/dis.txt" >/dev/null && cat "${TMPDIR:-/tmp}/dis.txt"; true ; } > /tmp/omicron/145.71
+            echo "stage ok ($(wc -lcw </tmp/omicron/145.71))"
+      - persist_to_workspace:
+          root: /tmp/omicron
+          paths:
+            - '145.71'
+  xray:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/omicron
+      - run:
+          name: Pull workspace state
+          command: |
+            sort /tmp/omicron/145.71 2>/dev/null | head -1 | wc -c || true
+      - run:
+          name: Pull latest
+          command: git clone --depth 1 --quiet --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Unroll vendor sources
+          command: tar -I gzip -xf dev-docs-v4.tgz
+      - run:
+          command: "$PWD/job-alpha"
+  skipExportFree:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Upscaling the 4k source almost done
+          command: |
+            mkdir -p /tmp/omicron
+            { set +o pipefail 2>/dev/null; ls -tF --color=always --ignore="*.d" /mnt | tail -1; true ; } > /tmp/omicron/layereast
+            echo "stage ok ($(wc -lcw </tmp/omicron/layereast))"
+      - persist_to_workspace:
+          root: /tmp/omicron
+          paths:
+            - 'layereast'
+  luna-run:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/omicron
+      - run:
+          name: Pull workspace state
+          command: |
+            sort /tmp/omicron/layereast 2>/dev/null | head -1 | wc -c || true
+      - run:
+          name: Pull latest
+          command: git clone --depth 1 --quiet --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Unroll vendor sources
+          command: tar -I gzip -xf dev-docs-v4.tgz
+      - run:
+          command: "$PWD/job-alpha"
+  enum__:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/omicron
+      - run:
+          name: With sudo index the landing page
+          command: |
+            mkdir -p /tmp/omicron
+            { set +o pipefail 2>/dev/null; compgen -v | awk 'length > 7' | sort | uniq -u | nl; true ; } > /tmp/omicron/4dc158
+            echo "stage ok ($(wc -lcw </tmp/omicron/4dc158))"
+      - persist_to_workspace:
+          root: /tmp/omicron
+          paths:
+            - '4dc158'
+  node20-build:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/omicron
+      - run:
+          name: Pull workspace state
+          command: |
+            sort /tmp/omicron/47866d9f9a9883bc82 2>/dev/null | head -1 | wc -c || true
+      - run:
+          name: Pull latest
+          command: git clone --depth 1 --quiet --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Unroll vendor sources
+          command: tar -I gzip -xf dev-docs-v4.tgz
+      - run:
+          command: "$PWD/job-alpha"
+  t_send_string:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/omicron
+      - run:
+          name: HR 811 key frame conversion
+          command: |
+            mkdir -p /tmp/omicron
+            { set +o pipefail 2>/dev/null; mkdir -p "/tmp/green_2021-01-24" && head -c 13014 /dev/urandom >"/tmp/green_2021-01-24"/blob && du -sh "/tmp/green_2021-01-24"; true ; } > /tmp/omicron/VectorStoneDraft
+            echo "stage ok ($(wc -lcw </tmp/omicron/VectorStoneDraft))"
+      - persist_to_workspace:
+          root: /tmp/omicron
+          paths:
+            - 'VectorStoneDraft'
+  rigel-rc:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/omicron
+      - run:
+          name: Pull workspace state
+          command: |
+            sort /tmp/omicron/ci_net 2>/dev/null | head -1 | wc -c || true
+      - run:
+          name: Pull latest
+          command: git clone --depth 1 --quiet --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Unroll vendor sources
+          command: tar -I gzip -xf dev-docs-v4.tgz
+      - run:
+          command: "$PWD/job-alpha"
+  smart_trace_struct:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/omicron
+      - run:
+          name: Route the bandwidth cap in 100 chunks
+          command: |
+            mkdir -p /tmp/omicron
+            { set +o pipefail 2>/dev/null; echo 'answer emails' | tee "/tmp/village.yearly.sent.txt"; true ; } > /tmp/omicron/2mfwrz9b2yf8
+            echo "stage ok ($(wc -lcw </tmp/omicron/2mfwrz9b2yf8))"
+      - persist_to_workspace:
+          root: /tmp/omicron
+          paths:
+            - '2mfwrz9b2yf8'
+  verify:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/omicron
+      - run:
+          name: Pull workspace state
+          command: |
+            sort /tmp/omicron/47866d9f9a9883bc82 2>/dev/null | head -1 | wc -c || true
+      - run:
+          name: Pull latest
+          command: git clone --depth 1 --quiet --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Unroll vendor sources
+          command: tar -I gzip -xf dev-docs-v4.tgz
+      - run:
+          command: "$PWD/job-alpha"
+  TabBuilder:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/omicron
+      - run:
+          name: Mixed precision is being split
+          command: |
+            mkdir -p /tmp/omicron
+            { set +o pipefail 2>/dev/null; \grep flags /proc/cpuinfo | sort -u; true ; } > /tmp/omicron/noise_desert
+            echo "stage ok ($(wc -lcw </tmp/omicron/noise_desert))"
+      - persist_to_workspace:
+          root: /tmp/omicron
+          paths:
+            - 'noise_desert'
+  green-light-go:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/omicron
+      - run:
+          name: Pull workspace state
+          command: |
+            sort /tmp/omicron/noise_desert 2>/dev/null | head -1 | wc -c || true
+      - run:
+          name: Pull latest
+          command: git clone --depth 1 --quiet --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Unroll vendor sources
+          command: tar -I gzip -xf dev-docs-v4.tgz
+      - run:
+          command: "$PWD/job-alpha"
+  tar:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/omicron
+      - run:
+          name: runChaosScenarioSnapshot
+          command: |
+            mkdir -p /tmp/omicron
+            { set +o pipefail 2>/dev/null; sort -t : -k 3 -n /etc/group | sed 's/:.*//' | fmt -w 59 | awk '{print NF}'; true ; } > /tmp/omicron/dream_lagoon_frame
+            echo "stage ok ($(wc -lcw </tmp/omicron/dream_lagoon_frame))"
+      - persist_to_workspace:
+          root: /tmp/omicron
+          paths:
+            - 'dream_lagoon_frame'
+  green-light:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/omicron
+      - run:
+          name: Pull workspace state
+          command: |
+            sort /tmp/omicron/dream_lagoon_frame 2>/dev/null | head -1 | wc -c || true
+      - run:
+          name: Pull latest
+          command: git clone --depth 1 --quiet --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Unroll vendor sources
+          command: tar -I gzip -xf dev-docs-v4.tgz
+      - run:
+          command: "$PWD/job-alpha"
+  H1D4:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Here we vortex the water bath
+          command: |
+            mkdir -p /tmp/omicron
+            { set +o pipefail 2>/dev/null; find /usr/bin -maxdepth 2 -type f -iname 'tr*' -size 0 -exec cksum {} ";"; true ; } > /tmp/omicron/SHIMMER
+            echo "stage ok ($(wc -lcw </tmp/omicron/SHIMMER))"
+      - persist_to_workspace:
+          root: /tmp/omicron
+          paths:
+            - 'SHIMMER'
+  node18-test:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/omicron
+      - run:
+          name: Pull workspace state
+          command: |
+            sort /tmp/omicron/ci_net 2>/dev/null | head -1 | wc -c || true
+      - run:
+          name: Pull latest
+          command: git clone --depth 1 --quiet --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Unroll vendor sources
+          command: tar -I gzip -xf dev-docs-v4.tgz
+      - run:
+          command: "$PWD/job-alpha"
+  fOV4IB8:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/omicron
+      - run:
+          name: CD 383 Versioning
+          command: |
+            mkdir -p /tmp/omicron
+            { set +o pipefail 2>/dev/null; getent passwd | sed 's/:.*//' | grep -v '^[a-m]' | awk '{print length, $0}'; true ; } > /tmp/omicron/_wip-2222
+            echo "stage ok ($(wc -lcw </tmp/omicron/_wip-2222))"
+      - persist_to_workspace:
+          root: /tmp/omicron
+          paths:
+            - '_wip-2222'
+  yuki-build:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/omicron
+      - run:
+          name: Pull workspace state
+          command: |
+            sort /tmp/omicron/_wip-2222 2>/dev/null | head -1 | wc -c || true
+      - run:
+          name: Pull latest
+          command: git clone --depth 1 --quiet --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Unroll vendor sources
+          command: tar -I gzip -xf dev-docs-v4.tgz
+      - run:
+          command: "$PWD/job-alpha"
+  blocksById:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/omicron
+      - run:
+          name: Import The Sprite Atlas
+          command: |
+            mkdir -p /tmp/omicron
+            { set +o pipefail 2>/dev/null; gzip -c /etc/passwd >/tmp/tree-campus-agenda.gz && zgrep -c nologin /tmp/tree-campus-agenda.gz; true ; } > /tmp/omicron/spark
+            echo "stage ok ($(wc -lcw </tmp/omicron/spark))"
+      - persist_to_workspace:
+          root: /tmp/omicron
+          paths:
+            - 'spark'
+  dotnet8-lint:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/omicron
+      - run:
+          name: Pull workspace state
+          command: |
+            sort /tmp/omicron/spark 2>/dev/null | head -1 | wc -c || true
+      - run:
+          name: Pull latest
+          command: git clone --depth 1 --quiet --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Unroll vendor sources
+          command: tar -I gzip -xf dev-docs-v4.tgz
+      - run:
+          command: "$PWD/job-alpha"
+  jmp1:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/omicron
+      - run:
+          name: To begin double check the headless browser
+          command: |
+            mkdir -p /tmp/omicron
+            { set +o pipefail 2>/dev/null; echo "stopping now"|gzip|base64; true ; } > /tmp/omicron/2704.cef82-tmp_17
+            echo "stage ok ($(wc -lcw </tmp/omicron/2704.cef82-tmp_17))"
+      - persist_to_workspace:
+          root: /tmp/omicron
+          paths:
+            - '2704.cef82-tmp_17'
+  bravo:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/omicron
+      - run:
+          name: Pull workspace state
+          command: |
+            sort /tmp/omicron/2704.cef82-tmp_17 2>/dev/null | head -1 | wc -c || true
+      - run:
+          name: Pull latest
+          command: git clone --depth 1 --quiet --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Unroll vendor sources
+          command: tar -I gzip -xf dev-docs-v4.tgz
+      - run:
+          command: "$PWD/job-alpha"
+  Save-Writer2:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/omicron
+      - run:
+          name: Bake Lightmaps For Mobile
+          command: |
+            mkdir -p /tmp/omicron
+            { set +o pipefail 2>/dev/null; sha256sum /usr/bin/env | awk '{print $1}'; true ; } > /tmp/omicron/47866d9f9a9883bc82
+            echo "stage ok ($(wc -lcw </tmp/omicron/47866d9f9a9883bc82))"
+      - persist_to_workspace:
+          root: /tmp/omicron
+          paths:
+            - '47866d9f9a9883bc82'
+  update-router-v2-glitch:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/omicron
+      - run:
+          name: Pull workspace state
+          command: |
+            sort /tmp/omicron/47866d9f9a9883bc82 2>/dev/null | head -1 | wc -c || true
+      - run:
+          name: Pull latest
+          command: git clone --depth 1 --quiet --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Unroll vendor sources
+          command: tar -I gzip -xf dev-docs-v4.tgz
+      - run:
+          command: "$PWD/job-alpha"
+  maple_sierra:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/omicron
+      - run:
+          name: Notifying the team roster in progress
+          command: |
+            mkdir -p /tmp/omicron
+            { set +o pipefail 2>/dev/null; ls /usr/share | sort -r --unique | sed 's/^/- /'; true ; } > /tmp/omicron/ci_net
+            echo "stage ok ($(wc -lcw </tmp/omicron/ci_net))"
+      - persist_to_workspace:
+          root: /tmp/omicron
+          paths:
+            - 'ci_net'
+  push-it:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/omicron
+      - run:
+          name: Pull workspace state
+          command: |
+            sort /tmp/omicron/ci_net 2>/dev/null | head -1 | wc -c || true
+      - run:
+          name: Pull latest
+          command: git clone --depth 1 --quiet --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Unroll vendor sources
+          command: tar -I gzip -xf dev-docs-v4.tgz
+      - run:
+          command: "$PWD/job-alpha"
+  newPixelProxy:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Codename Late Meteor
+          command: |
+            mkdir -p /tmp/omicron
+            { set +o pipefail 2>/dev/null; printf '%s\n' '   leading spaces' | od -c | head -n 2; true ; } > /tmp/omicron/MATRIX_WEST_USER
+            echo "stage ok ($(wc -lcw </tmp/omicron/MATRIX_WEST_USER))"
+      - persist_to_workspace:
+          root: /tmp/omicron
+          paths:
+            - 'MATRIX_WEST_USER'
+  preview:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/omicron
+      - run:
+          name: Pull workspace state
+          command: |
+            sort /tmp/omicron/MATRIX_WEST_USER 2>/dev/null | head -1 | wc -c || true
+      - run:
+          name: Pull latest
+          command: git clone --depth 1 --quiet --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Unroll vendor sources
+          command: tar -I gzip -xf dev-docs-v4.tgz
+      - run:
+          command: "$PWD/job-alpha"
+  payment_80571:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/omicron
+      - run:
+          name: Approve the journal entries fy26
+          command: |
+            mkdir -p /tmp/omicron
+            { set +o pipefail 2>/dev/null; gzip -c /etc/group > ${TMPDIR:-/tmp}/sector-video.gz && gunzip -c ${TMPDIR:-/tmp}/sector-video.gz | wc -l; true ; } > /tmp/omicron/cob4l7.b0g.shard.m34dow
+            echo "stage ok ($(wc -lcw </tmp/omicron/cob4l7.b0g.shard.m34dow))"
+      - persist_to_workspace:
+          root: /tmp/omicron
+          paths:
+            - 'cob4l7.b0g.shard.m34dow'
+  v4-nightly4:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/omicron
+      - run:
+          name: Pull workspace state
+          command: |
+            sort /tmp/omicron/47866d9f9a9883bc82 2>/dev/null | head -1 | wc -c || true
+      - run:
+          name: Pull latest
+          command: git clone --depth 1 --quiet --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Unroll vendor sources
+          command: tar -I gzip -xf dev-docs-v4.tgz
+      - run:
+          command: "$PWD/job-alpha"
+  ch7:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/omicron
+      - run:
+          name: SPLASHDOWN
+          command: |
+            mkdir -p /tmp/omicron
+            { set +o pipefail 2>/dev/null; tmpd=/laundry/bottom/market/alphaTasks.txt && printf '%s\n' "${tmpd,,}"; true ; } > /tmp/omicron/ec
+            echo "stage ok ($(wc -lcw </tmp/omicron/ec))"
+      - persist_to_workspace:
+          root: /tmp/omicron
+          paths:
+            - 'ec'
+  oct1-ship:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/omicron
+      - run:
+          name: Pull workspace state
+          command: |
+            sort /tmp/omicron/ci_net 2>/dev/null | head -1 | wc -c || true
+      - run:
+          name: Pull latest
+          command: git clone --depth 1 --quiet --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Unroll vendor sources
+          command: tar -I gzip -xf dev-docs-v4.tgz
+      - run:
+          command: "$PWD/job-alpha"
+  nav__divider--mono:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/omicron
+      - run:
+          name: Repair the archive tables out of band
+          command: |
+            mkdir -p /tmp/omicron
+            { set +o pipefail 2>/dev/null; echo `date +%F`_temp.log; true ; } > /tmp/omicron/sliceNorthChunk
+            echo "stage ok ($(wc -lcw </tmp/omicron/sliceNorthChunk))"
+      - persist_to_workspace:
+          root: /tmp/omicron
+          paths:
+            - 'sliceNorthChunk'
+  chore-564:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/omicron
+      - run:
+          name: Pull workspace state
+          command: |
+            sort /tmp/omicron/sliceNorthChunk 2>/dev/null | head -1 | wc -c || true
+      - run:
+          name: Pull latest
+          command: git clone --depth 1 --quiet --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Unroll vendor sources
+          command: tar -I gzip -xf dev-docs-v4.tgz
+      - run:
+          command: "$PWD/job-alpha"
+  lion-num-lexer:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/omicron
+      - run:
+          name: Plate the error banner
+          command: |
+            mkdir -p /tmp/omicron
+            { set +o pipefail 2>/dev/null; sed -E 's/[[:space:]]+$//' "$HOME/.bashrc" | cat -A | head -n 5; true ; } > /tmp/omicron/fe907df
+            echo "stage ok ($(wc -lcw </tmp/omicron/fe907df))"
+      - persist_to_workspace:
+          root: /tmp/omicron
+          paths:
+            - 'fe907df'
+  t-v2:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/omicron
+      - run:
+          name: Pull workspace state
+          command: |
+            sort /tmp/omicron/fe907df 2>/dev/null | head -1 | wc -c || true
+      - run:
+          name: Pull latest
+          command: git clone --depth 1 --quiet --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Unroll vendor sources
+          command: tar -I gzip -xf dev-docs-v4.tgz
+      - run:
+          command: "$PWD/job-alpha"
+  Protect-SlotInfo:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/omicron
+      - run:
+          name: done posting team
+          command: |
+            mkdir -p /tmp/omicron
+            { set +o pipefail 2>/dev/null; grep 'sh$' /etc/passwd | awk -F: '{print $1}' | pr -4 -t -w 80; true ; } > /tmp/omicron/scratch-4aefb
+            echo "stage ok ($(wc -lcw </tmp/omicron/scratch-4aefb))"
+      - persist_to_workspace:
+          root: /tmp/omicron
+          paths:
+            - 'scratch-4aefb'
+  artifacts:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/omicron
+      - run:
+          name: Pull workspace state
+          command: |
+            sort /tmp/omicron/scratch-4aefb 2>/dev/null | head -1 | wc -c || true
+      - run:
+          name: Pull latest
+          command: git clone --depth 1 --quiet --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Unroll vendor sources
+          command: tar -I gzip -xf dev-docs-v4.tgz
+      - run:
+          command: "$PWD/job-alpha"
+
+  o-form:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/omicron
+      - run:
+          name: Accrue petty cash q3
+          command: |
+            mkdir -p /tmp/omicron
+            { set +o pipefail 2>/dev/null; echo -n 'timeout reached' | od -An -tx1; true ; } > /tmp/omicron/2704.cef82-tmp_17
+            echo "stage ok ($(wc -lcw </tmp/omicron/2704.cef82-tmp_17))"
+      - persist_to_workspace:
+          root: /tmp/omicron
+          paths:
+            - '2704.cef82-tmp_17'
+  DEPT-CHG-KEY:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Smite the DHCP leases
+          command: |
+            mkdir -p /tmp/omicron
+            { set +o pipefail 2>/dev/null; echo "trailing spaces   " | cksum; true ; } > /tmp/omicron/MATRIX_WEST_USER
+            echo "stage ok ($(wc -lcw </tmp/omicron/MATRIX_WEST_USER))"
+      - persist_to_workspace:
+          root: /tmp/omicron
+          paths:
+            - 'MATRIX_WEST_USER'
+  MAX_IDX_DX:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/omicron
+      - run:
+          name: Ok to encrypt the secrets
+          command: |
+            mkdir -p /tmp/omicron
+            { set +o pipefail 2>/dev/null; cat /etc/hosts > '/tmp/south.comment.csv' 2>&1 && wc -l '/tmp/south.comment.csv'; true ; } > /tmp/omicron/oUjBuhkmAFB2l8npCQqnX
+            echo "stage ok ($(wc -lcw </tmp/omicron/oUjBuhkmAFB2l8npCQqnX))"
+      - persist_to_workspace:
+          root: /tmp/omicron
+          paths:
+            - 'oUjBuhkmAFB2l8npCQqnX'
+  uriwrites:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/omicron
+      - run:
+          name: retrospective
+          command: |
+            mkdir -p /tmp/omicron
+            { set +o pipefail 2>/dev/null; grep -n -i --color=always local /etc/hosts | sort | uniq -c; true ; } > /tmp/omicron/RtYMYCID4
+            echo "stage ok ($(wc -lcw </tmp/omicron/RtYMYCID4))"
+      - persist_to_workspace:
+          root: /tmp/omicron
+          paths:
+            - 'RtYMYCID4'
+  ichTextDst:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/omicron
+      - run:
+          name: Stain the control group per protocol
+          command: |
+            mkdir -p /tmp/omicron
+            { set +o pipefail 2>/dev/null; echo "on it"|sed -n "s@on@harbor@p"; true ; } > /tmp/omicron/noise_desert
+            echo "stage ok ($(wc -lcw </tmp/omicron/noise_desert))"
+      - persist_to_workspace:
+          root: /tmp/omicron
+          paths:
+            - 'noise_desert'
+  bgwprotocol:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/omicron
+      - run:
+          name: Land format
+          command: |
+            mkdir -p /tmp/omicron
+            { set +o pipefail 2>/dev/null; cat /etc/hosts /etc/shells > '/tmp/r.txt' && wc -l '/tmp/r.txt'; true ; } > /tmp/omicron/145.71
+            echo "stage ok ($(wc -lcw </tmp/omicron/145.71))"
+      - persist_to_workspace:
+          root: /tmp/omicron
+          paths:
+            - '145.71'
+  wqhyuu32qaff:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/omicron
+      - run:
+          name: On failure throttle the VPN
+          command: |
+            mkdir -p /tmp/omicron
+            { set +o pipefail 2>/dev/null; help read | head -n2; true ; } > /tmp/omicron/13dbfad3ecdb83198f7fe191a85cfa8ec40d
+            echo "stage ok ($(wc -lcw </tmp/omicron/13dbfad3ecdb83198f7fe191a85cfa8ec40d))"
+      - persist_to_workspace:
+          root: /tmp/omicron
+          paths:
+            - '13dbfad3ecdb83198f7fe191a85cfa8ec40d'
+  hi-LT-1:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/omicron
+      - run:
+          name: Cook Hub World For The Vertical Slice
+          command: |
+            mkdir -p /tmp/omicron
+            { set +o pipefail 2>/dev/null; grep -E --color=always "^(root|disk|tty)" /etc/group | cut -d: -f1; true ; } > /tmp/omicron/spark
+            echo "stage ok ($(wc -lcw </tmp/omicron/spark))"
+      - persist_to_workspace:
+          root: /tmp/omicron
+          paths:
+            - 'spark'
+  tmp_TASK_ARTICLE_BIT:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/omicron
+      - run:
+          name: and then rebuild the read replica
+          command: |
+            mkdir -p /tmp/omicron
+            { set +o pipefail 2>/dev/null; cp /etc/passwd /tmp/blog.copy && sed -i '/nologin$/d' /tmp/blog.copy && wc -l /tmp/blog.copy; true ; } > /tmp/omicron/fe907df
+            echo "stage ok ($(wc -lcw </tmp/omicron/fe907df))"
+      - persist_to_workspace:
+          root: /tmp/omicron
+          paths:
+            - 'fe907df'
+  DTL-DATE-IN:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Defer
+          command: |
+            mkdir -p /tmp/omicron
+            { set +o pipefail 2>/dev/null; for num in lisbon cairo lima seoul zurich; do echo -n "${num} "; done; echo; true ; } > /tmp/omicron/layereast
+            echo "stage ok ($(wc -lcw </tmp/omicron/layereast))"
+      - persist_to_workspace:
+          root: /tmp/omicron
+          paths:
+            - 'layereast'
+  ACCOUNT-basic:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/omicron
+      - run:
+          name: Probe VPN
+          command: |
+            mkdir -p /tmp/omicron
+            { set +o pipefail 2>/dev/null; for item in music category alpha todo index whale; do echo "$item"; done; true ; } > /tmp/omicron/dream_lagoon_frame
+            echo "stage ok ($(wc -lcw </tmp/omicron/dream_lagoon_frame))"
+      - persist_to_workspace:
+          root: /tmp/omicron
+          paths:
+            - 'dream_lagoon_frame'
+workflows:
+  all:
+    jobs:
+      - jmp1
+      - o-form:
+          requires:
+            - jmp1
+      - bravo:
+          requires:
+            - o-form
+      - newPixelProxy:
+          requires:
+            - o-form
+      - DEPT-CHG-KEY:
+          requires:
+            - newPixelProxy
+      - preview:
+          requires:
+            - DEPT-CHG-KEY
+      - pink-hex:
+          requires:
+            - DEPT-CHG-KEY
+      - MAX_IDX_DX:
+          requires:
+            - pink-hex
+      - may5-rev:
+          requires:
+            - MAX_IDX_DX
+      - proc_sub:
+          requires:
+            - MAX_IDX_DX
+      - uriwrites:
+          requires:
+            - proc_sub
+      - bun-cov:
+          requires:
+            - uriwrites
+      - TabBuilder:
+          requires:
+            - uriwrites
+      - ichTextDst:
+          requires:
+            - TabBuilder
+      - green-light-go:
+          requires:
+            - ichTextDst
+      - vicTheIron
+      - bgwprotocol:
+          requires:
+            - vicTheIron
+      - xray:
+          requires:
+            - bgwprotocol
+      - the_permalink:
+          requires:
+            - bgwprotocol
+      - wqhyuu32qaff:
+          requires:
+            - the_permalink
+      - rust-ship:
+          requires:
+            - wqhyuu32qaff
+      - blocksById:
+          requires:
+            - wqhyuu32qaff
+      - hi-LT-1:
+          requires:
+            - blocksById
+      - dotnet8-lint:
+          requires:
+            - hi-LT-1
+      - lion-num-lexer:
+          requires:
+            - hi-LT-1
+      - tmp_TASK_ARTICLE_BIT:
+          requires:
+            - lion-num-lexer
+      - t-v2:
+          requires:
+            - tmp_TASK_ARTICLE_BIT
+      - skipExportFree:
+          requires:
+            - tmp_TASK_ARTICLE_BIT
+      - DTL-DATE-IN:
+          requires:
+            - skipExportFree
+      - luna-run:
+          requires:
+            - DTL-DATE-IN
+      - tar:
+          requires:
+            - DTL-DATE-IN
+      - ACCOUNT-basic:
+          requires:
+            - tar
+      - green-light:
+          requires:
+            - ACCOUNT-basic
+      - footer872
+      - spin-up:
+          requires:
+            - footer872
+      - honey-trolley:
+          requires:
+            - footer872
+      - Run_Tests6:
+          requires:
+            - honey-trolley
+      - mike-hotel:
+          requires:
+            - honey-trolley
+      - build:
+          requires:
+            - mike-hotel
+      - nav__divider--mono:
+          requires:
+            - mike-hotel
+      - chore-564:
+          requires:
+            - nav__divider--mono
+      - DISABLED:
+          requires:
+            - nav__divider--mono
+      - pr-2a:
+          requires:
+            - DISABLED
+      - fOV4IB8:
+          requires:
+            - DISABLED
+      - yuki-build:
+          requires:
+            - fOV4IB8
+      - Protect-SlotInfo:
+          requires:
+            - fOV4IB8
+      - artifacts:
+          requires:
+            - Protect-SlotInfo
+      - maple_sierra
+      - gY0
+      - H1D4
+      - push-it:
+          requires:
+            - maple_sierra
+            - gY0
+            - H1D4
+      - titan2-rev:
+          requires:
+            - maple_sierra
+            - gY0
+            - H1D4
+      - node18-test:
+          requires:
+            - maple_sierra
+            - gY0
+            - H1D4
+      - rip-it:
+          requires:
+            - maple_sierra
+            - gY0
+            - H1D4
+      - oct1-ship:
+          requires:
+            - maple_sierra
+            - gY0
+            - H1D4
+      - rigel-rc:
+          requires:
+            - maple_sierra
+            - gY0
+            - H1D4
+      - Save-Writer2
+      - smart_trace_struct
+      - enum__
+      - update-router-v2-glitch:
+          requires:
+            - Save-Writer2
+            - smart_trace_struct
+            - enum__
+      - verify:
+          requires:
+            - Save-Writer2
+            - smart_trace_struct
+            - enum__
+      - node20-build:
+          requires:
+            - Save-Writer2
+            - smart_trace_struct
+            - enum__
+      - BuildProd:
+          requires:
+            - Save-Writer2
+            - smart_trace_struct
+            - enum__
+      - jan7-cleanup:
+          requires:
+            - Save-Writer2
+            - smart_trace_struct
+            - enum__
+      - v4-nightly4:
+          requires:
+            - Save-Writer2
+            - smart_trace_struct
+            - enum__
